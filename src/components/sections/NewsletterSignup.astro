@@ -1,0 +1,52 @@
+---
+import { default as icons } from 'lucide-react';
+
+const { Mail } = icons;
+---
+
+<div class="rounded-[2rem] border border-[#e7d3b4] bg-[#f9f1e6] p-8 shadow-sm sm:p-10">
+  <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+    <div class="max-w-xl space-y-3">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#9f6a3c]">Insights & updates</p>
+      <h3 class="text-2xl font-semibold text-[#23110d]">Receive practical notes on innovation, delivery, and emerging technology.</h3>
+      <p class="text-base leading-7 text-[#6b5b50]">This form is intentionally front-end only for now. A real newsletter service can be connected later without changing the page structure.</p>
+    </div>
+
+    <form class="w-full max-w-lg rounded-2xl border border-[#e3c58f] bg-[#fffdf8] p-4 shadow-sm" id="newsletter-form">
+      <label class="sr-only" for="newsletter-email">Email address</label>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <div class="relative flex-1">
+          <Mail className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9f6a3c]" />
+          <input id="newsletter-email" name="email" type="email" required class="w-full rounded-full border border-[#e3c58f] bg-[#fffdf8] py-3 pl-10 pr-4 text-sm text-[#23110d] outline-none ring-0 transition focus:border-[#5a1f14]" placeholder="Your email address" />
+        </div>
+        <button type="submit" class="rounded-full bg-[#5a1f14] px-5 py-3 text-sm font-semibold text-[#f7efe8] transition hover:bg-[#3f140d]">Subscribe</button>
+      </div>
+      <p id="newsletter-message" class="mt-3 text-sm text-[#6b5b50]" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const message = document.getElementById('newsletter-message');
+  const emailInput = document.getElementById('newsletter-email');
+
+  if (form && message && emailInput) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const value = emailInput.value.trim();
+      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+      if (!validEmail) {
+        message.textContent = 'Please enter a valid email address.';
+        message.className = 'mt-3 text-sm text-[#a74b2f]';
+        return;
+      }
+
+      // Placeholder for a newsletter service such as Mailchimp, ConvertKit, Buttondown, or a custom API endpoint.
+      message.textContent = 'Thanks for subscribing!';
+      message.className = 'mt-3 text-sm font-semibold text-[#2c5f45]';
+      form.reset();
+    });
+  }
+</script>

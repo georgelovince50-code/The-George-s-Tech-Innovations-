@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const team = [
+  { name: 'Avery Morgan', role: 'Founder & Strategy Lead', bio: 'A placeholder leader focused on product direction, transformation planning, and collaborative delivery.' },
+  { name: 'Noah Rivera', role: 'Engineering Director', bio: 'A placeholder technologist guiding resilient architecture, digital platforms, and practical innovation.' },
+  { name: 'Jules Carter', role: 'Experience Designer', bio: 'A placeholder design partner shaping intuitive interfaces and polished digital journeys.' },
+];
+---
+
+<BaseLayout title="About" description="Placeholder overview of The George's Tech Innovations, its mission, values, and leadership team.">
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+      <div class="space-y-6">
+        <Badge text="About the studio" />
+        <h1 class="text-4xl font-bold text-[#23110d] sm:text-5xl">A modern technology studio built for thoughtful growth.</h1>
+        <p class="text-lg leading-8 text-[#5f564f]">The George's Tech Innovations is a placeholder company profile for a technology partner that helps teams turn ideas into resilient, elegant digital systems. The story below is intentionally realistic and easy to replace later with real company history and voice.</p>
+      </div>
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#9f6a3c]">Mission</p>
+        <p class="mt-4 text-xl leading-8 text-[#23110d]">We create useful digital experiences that make innovation feel practical, collaborative, and measurable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <SectionHeading eyebrow="Our story" title="Placeholder company narrative with room to grow into a real brand voice." description="The content here is designed as scaffolding so the structure feels complete before real messaging is introduced." />
+    <div class="mt-10 grid gap-8 lg:grid-cols-2">
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-8">
+        <h3 class="text-2xl font-semibold text-[#23110d]">Built around curiosity</h3>
+        <p class="mt-4 text-base leading-8 text-[#6b5b50]">The company is imagined as a partner for founders and organizations that need both strategic guidance and hands-on delivery support. The focus stays on clarity, momentum, and creating something useful.</p>
+      </div>
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-8">
+        <h3 class="text-2xl font-semibold text-[#23110d]">Prepared for change</h3>
+        <p class="mt-4 text-base leading-8 text-[#6b5b50]">The work is meant to support a wide range of digital initiatives, from enterprise modernization to early-stage experimentation, all with a consistent approach to thoughtful design and dependable execution.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <SectionHeading eyebrow="Values" title="A small set of principles that shape the way we build." />
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-7">
+        <h3 class="text-xl font-semibold text-[#23110d]">Clarity first</h3>
+        <p class="mt-3 text-base leading-7 text-[#6b5b50]">We help teams align on priorities before any production work begins.</p>
+      </div>
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-7">
+        <h3 class="text-xl font-semibold text-[#23110d]">Design with intent</h3>
+        <p class="mt-3 text-base leading-7 text-[#6b5b50]">Every interface and workflow is shaped around human needs and practical outcomes.</p>
+      </div>
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-7">
+        <h3 class="text-xl font-semibold text-[#23110d]">Build to last</h3>
+        <p class="mt-3 text-base leading-7 text-[#6b5b50]">We favor resilient systems that can scale with the business over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <SectionHeading eyebrow="Team" title="A placeholder leadership team with room to become real people and real stories." />
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {team.map((person) => (
+        <article class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-7 shadow-sm">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-[#5a1f14] text-xl font-semibold text-[#f7efe8]">{person.name.split(' ').map((part) => part[0]).join('')}</div>
+          <h3 class="mt-5 text-xl font-semibold text-[#23110d]">{person.name}</h3>
+          <p class="mt-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#9f6a3c]">{person.role}</p>
+          <p class="mt-4 text-base leading-7 text-[#6b5b50]">{person.bio}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

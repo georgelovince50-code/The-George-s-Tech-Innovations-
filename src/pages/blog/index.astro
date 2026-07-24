@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import NewsletterSignup from '../../components/sections/NewsletterSignup.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Blog" description="Placeholder blog and insights for The George's Tech Innovations.">
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <SectionHeading eyebrow="Blog & insights" title="Placeholder articles for future thought leadership and product updates." description="These posts are structured as content collections so they can be replaced with real editorial pieces later." />
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {posts.map((post) => (
+        <article class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-8 shadow-sm">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#9f6a3c]">{post.data.author}</p>
+          <h2 class="mt-3 text-2xl font-semibold text-[#23110d]">{post.data.title}</h2>
+          <p class="mt-4 text-base leading-7 text-[#6b5b50]">{post.data.description}</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => <span class="rounded-full border border-[#e3c58f] bg-[#f7efe8] px-3 py-1 text-sm text-[#7a3b28]">{tag}</span>)}
+          </div>
+          <a href={`/blog/${post.slug}`} class="mt-6 inline-flex text-sm font-semibold text-[#5a1f14]">Read more</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+    <NewsletterSignup />
+  </section>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/ui/Badge.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-28">
+    <Badge text="Blog post" />
+    <h1 class="mt-6 text-4xl font-bold text-[#23110d] sm:text-5xl">{post.data.title}</h1>
+    <div class="mt-6 flex flex-wrap gap-3 text-sm text-[#6b5b50]">
+      <span>{post.data.author}</span>
+      <span>•</span>
+      <span>{new Date(post.data.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-2">
+      {post.data.tags.map((tag) => <span class="rounded-full border border-[#e3c58f] bg-[#f7efe8] px-3 py-1 text-sm text-[#7a3b28]">{tag}</span>)}
+    </div>
+    <div class="prose prose-lg mt-10 max-w-none prose-headings:text-[#23110d] prose-p:text-[#5f564f] prose-a:text-[#5a1f14]">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

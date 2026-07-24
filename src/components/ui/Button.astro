@@ -1,0 +1,13 @@
+---
+const { href, variant = 'primary', class: className = '' } = Astro.props;
+const base = 'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a74b2f]';
+const variants = {
+  primary: 'bg-[#5a1f14] text-[#f7efe8] hover:bg-[#3f140d]',
+  secondary: 'border border-[#9f6a3c] text-[#5a1f14] hover:bg-[#f3e3cc]',
+  ghost: 'text-[#5a1f14] hover:bg-[#f3e3cc]',
+};
+---
+
+<a href={href} class={`${base} ${variants[variant]} ${className}`}>
+  <slot />
+</a>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Badge from '../components/ui/Badge.astro';
+import { default as icons } from 'lucide-react';
+
+const { Mail, MapPin, Phone } = icons;
+---
+
+<BaseLayout title="Contact" description="Placeholder contact information and form for The George's Tech Innovations.">
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="space-y-6">
+        <Badge text="Contact" />
+        <SectionHeading eyebrow="Get in touch" title="Start a conversation about your next digital step." description="This placeholder form is ready for a future backend or form service integration, while the contact details below are already styled for a polished handoff." />
+        <div class="space-y-4 rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-8 shadow-sm">
+          <div class="flex items-start gap-3">
+            <MapPin class="mt-1 h-5 w-5 text-[#9f6a3c]" />
+            <div>
+              <p class="font-semibold text-[#23110d]">Visit us</p>
+              <p class="mt-1 text-base leading-7 text-[#6b5b50]">120 Innovation Avenue, Suite 400, Austin, TX 78701</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <Mail class="mt-1 h-5 w-5 text-[#9f6a3c]" />
+            <div>
+              <p class="font-semibold text-[#23110d]">Email</p>
+              <a href="mailto:hello@georgestechinnovations.com" class="mt-1 block text-base leading-7 text-[#5a1f14]">hello@georgestechinnovations.com</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <Phone class="mt-1 h-5 w-5 text-[#9f6a3c]" />
+            <div>
+              <p class="font-semibold text-[#23110d]">Call</p>
+              <a href="tel:+15125550199" class="mt-1 block text-base leading-7 text-[#5a1f14]">+1 (512) 555-0199</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <a href="#" class="rounded-full border border-[#9f6a3c] px-4 py-2 text-sm font-semibold text-[#5a1f14]">LinkedIn</a>
+          <a href="#" class="rounded-full border border-[#9f6a3c] px-4 py-2 text-sm font-semibold text-[#5a1f14]">Twitter</a>
+        </div>
+      </div>
+      <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-8 shadow-sm">
+        <form class="space-y-5">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-[#23110d]" for="name">Name</label>
+              <input id="name" class="w-full rounded-2xl border border-[#e3c58f] bg-[#fffaf2] px-4 py-3 text-base text-[#23110d] outline-none focus:border-[#5a1f14]" placeholder="Your name" />
+            </div>
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-[#23110d]" for="email">Email</label>
+              <input id="email" type="email" class="w-full rounded-2xl border border-[#e3c58f] bg-[#fffaf2] px-4 py-3 text-base text-[#23110d] outline-none focus:border-[#5a1f14]" placeholder="name@example.com" />
+            </div>
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-semibold text-[#23110d]" for="company">Company</label>
+            <input id="company" class="w-full rounded-2xl border border-[#e3c58f] bg-[#fffaf2] px-4 py-3 text-base text-[#23110d] outline-none focus:border-[#5a1f14]" placeholder="Your company" />
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-semibold text-[#23110d]" for="message">Message</label>
+            <textarea id="message" rows="6" class="w-full rounded-2xl border border-[#e3c58f] bg-[#fffaf2] px-4 py-3 text-base text-[#23110d] outline-none focus:border-[#5a1f14]" placeholder="Tell us what you are building."></textarea>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <p class="text-sm leading-7 text-[#6b5b50]"><!-- Placeholder comment: wire this form to Formspree, Web3Forms, or another endpoint later. --></p>
+            <button type="submit" class="rounded-full bg-[#5a1f14] px-5 py-3 text-sm font-semibold text-[#f7efe8] transition hover:bg-[#3f140d]">Send message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { services } from '../data/services';
+import { default as icons } from 'lucide-react';
+
+const { ArrowRight, Blocks, BrainCircuit, Cloud, Cursor, Palette, ShieldCheck, Sparkles } = icons;
+
+const iconMap = {
+  Globe: Blocks,
+  Blocks,
+  ShieldCheck,
+  Cloud,
+  Palette,
+  Cursor,
+  Sparkles,
+};
+---
+
+<BaseLayout title="Services" description="Placeholder overview of the services offered by The George's Tech Innovations.">
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <SectionHeading eyebrow="Services" title="A practical service portfolio for modern digital teams." description="Each offering is presented as placeholder content so the structure can be replaced with real service positioning later." />
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {services.map((service) => {
+        const Icon = iconMap[service.icon as keyof typeof iconMap] || Sparkles;
+        return (
+          <article class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-7 shadow-sm">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3e3cc] text-[#5a1f14]">
+              <Icon className="h-6 w-6" />
+            </div>
+            <h2 class="mt-5 text-2xl font-semibold text-[#23110d]">{service.title}</h2>
+            <p class="mt-3 text-base leading-7 text-[#6b5b50]">{service.description}</p>
+            <p class="mt-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#9f6a3c]">{service.category}</p>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
+    <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-8 lg:p-10">
+      <h2 class="text-3xl font-semibold text-[#23110d]">How engagements usually begin</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#9f6a3c]">01</p>
+          <p class="mt-3 text-lg font-semibold text-[#23110d]">Discovery</p>
+          <p class="mt-2 text-base leading-7 text-[#6b5b50]">We align on goals, constraints, and the outcomes that matter most.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#9f6a3c]">02</p>
+          <p class="mt-3 text-lg font-semibold text-[#23110d]">Design & build</p>
+          <p class="mt-2 text-base leading-7 text-[#6b5b50]">We shape the experience and technical path with a pragmatic delivery model.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#9f6a3c]">03</p>
+          <p class="mt-3 text-lg font-semibold text-[#23110d]">Launch & support</p>
+          <p class="mt-2 text-base leading-7 text-[#6b5b50]">We stay close during rollout so the solution can evolve with the team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

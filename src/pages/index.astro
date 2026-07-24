@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Badge from '../components/ui/Badge.astro';
+import NewsletterSignup from '../components/sections/NewsletterSignup.astro';
+import { services, projects } from '../data/services';
+import { default as icons } from 'lucide-react';
+
+const { ArrowRight, Blocks, BrainCircuit, Sparkles } = icons;
+const featuredProjects = projects.slice(0, 3);
+---
+
+<BaseLayout title="Home" description="Placeholder marketing website for The George's Tech Innovations, a technology solutions studio focused on digital products and innovation.">
+  <section class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-28">
+    <div class="max-w-2xl space-y-8">
+      <Badge text="Placeholder site template" />
+      <div class="space-y-5">
+        <h1 class="text-4xl font-bold text-[#23110d] sm:text-5xl lg:text-6xl">Technology solutions shaped for ambitious teams.</h1>
+        <p class="text-lg leading-8 text-[#5f564f] sm:text-xl">We help founders, operators, and growing businesses move from concept to launch with strategy, product thinking, and disciplined execution.</p>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <Button href="/contact">Get in touch</Button>
+        <Button href="/services" variant="secondary">Explore services</Button>
+      </div>
+      <div class="grid gap-4 rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-6 sm:grid-cols-3">
+        <div>
+          <p class="text-3xl font-semibold text-[#5a1f14]">7+</p>
+          <p class="mt-2 text-sm text-[#6b5b50]">Service areas</p>
+        </div>
+        <div>
+          <p class="text-3xl font-semibold text-[#5a1f14]">24/7</p>
+          <p class="mt-2 text-sm text-[#6b5b50]">Delivery support</p>
+        </div>
+        <div>
+          <p class="text-3xl font-semibold text-[#5a1f14]">100%</p>
+          <p class="mt-2 text-sm text-[#6b5b50]">Placeholder focus</p>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-[2rem] border border-[#e8d6b1] bg-[#fffdf8] p-8 shadow-sm">
+      <div class="flex items-center gap-3 text-[#9f6a3c]">
+        <Sparkles className="h-6 w-6" />
+        <p class="text-sm font-semibold uppercase tracking-[0.35em]">What we do</p>
+      </div>
+      <div class="mt-8 space-y-6">
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Digital strategy and product delivery</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">We shape strong foundations for modern launches by pairing product strategy with technical execution.</p>
+        </div>
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Innovation-ready technology systems</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">From cloud architecture to blockchain experiences, we help teams move with confidence into new markets.</p>
+        </div>
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Thoughtful customer experience design</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">We build interfaces that feel intuitive, trustworthy, and tailored to the people using them every day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <SectionHeading eyebrow="Core services" title="A focused set of capabilities for teams building the future." description="Each engagement is shaped around clarity, practicality, and long-term durability." />
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {services.slice(0, 6).map((service) => (
+        <article class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-7 shadow-sm">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3e3cc] text-[#5a1f14]">
+            {service.icon === 'Globe' && <Blocks className="h-6 w-6" />}
+            {service.icon === 'Blocks' && <Blocks className="h-6 w-6" />}
+            {service.icon === 'ShieldCheck' && <Sparkles className="h-6 w-6" />}
+            {service.icon === 'Cloud' && <BrainCircuit className="h-6 w-6" />}
+            {service.icon === 'Palette' && <Sparkles className="h-6 w-6" />}
+            {service.icon === 'Cursor' && <BrainCircuit className="h-6 w-6" />}
+          </div>
+          <h3 class="mt-5 text-2xl font-semibold text-[#23110d]">{service.title}</h3>
+          <p class="mt-3 text-base leading-7 text-[#6b5b50]">{service.description}</p>
+          <a href="/services" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#5a1f14]">View service <ArrowRight className="h-4 w-4" /></a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <div class="grid gap-8 rounded-[2rem] border border-[#efe2cc] bg-[#fffdf8] p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
+      <div class="space-y-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#9f6a3c]">Why choose us</p>
+        <h2 class="text-3xl font-semibold text-[#23110d] sm:text-4xl">We combine strategic thinking with responsive execution.</h2>
+        <p class="text-lg leading-8 text-[#6b5b50]">Our placeholder process is built to keep stakeholders aligned, reduce ambiguity, and create momentum from the first conversation.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Clear communication</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">Thoughtful project management keeps each phase moving with confidence.</p>
+        </div>
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Flexible delivery</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">Our approach fits both rapid experiments and long-term platform work.</p>
+        </div>
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Premium experience</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">We aim for polished delivery that feels calm, thoughtful, and resilient.</p>
+        </div>
+        <div class="rounded-2xl border border-[#efe2cc] bg-[#f8f2e9] p-5">
+          <p class="text-lg font-semibold text-[#23110d]">Built for growth</p>
+          <p class="mt-2 text-sm leading-7 text-[#6b5b50]">Every solution is planned with scale in mind from the earliest decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <SectionHeading eyebrow="Featured projects" title="Placeholder case studies that show the range of our work." description="These concept projects reflect the kinds of digital experiences we are prepared to shape for future clients." />
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {featuredProjects.map((project) => (
+        <article class="overflow-hidden rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] shadow-sm">
+          <div class="h-44 bg-[linear-gradient(135deg,#e3c58f,#f3e3cc)]" />
+          <div class="p-7">
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#9f6a3c]">{project.category}</p>
+            <h3 class="mt-3 text-2xl font-semibold text-[#23110d]">{project.title}</h3>
+            <p class="mt-3 text-base leading-7 text-[#6b5b50]">{project.description}</p>
+            <a href="/projects" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#5a1f14]">See all work <ArrowRight className="h-4 w-4" /></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <NewsletterSignup />
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
+    <div class="rounded-[2rem] border border-[#efe2cc] bg-[#5a1f14] p-8 text-[#f7efe8] lg:p-12">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl space-y-4">
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#e3c58f]">Ready when you are</p>
+          <h2 class="text-3xl font-semibold sm:text-4xl">Let’s build a stronger digital foundation together.</h2>
+          <p class="text-lg leading-8 text-[#f5e8d9]">This site is a structured placeholder for a future real-world studio presence, but the experience is already designed to feel polished and purposeful.</p>
+        </div>
+        <Button href="/contact" variant="secondary" class="bg-[#f7efe8] text-[#5a1f14] hover:bg-[#fffaf2]" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

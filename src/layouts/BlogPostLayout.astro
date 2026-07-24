@@ -1,0 +1,24 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <article class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] p-8 shadow-sm lg:p-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#9f6a3c]">Blog post</p>
+      <h1 class="mt-6 text-4xl font-bold text-[#23110d] sm:text-5xl">{frontmatter.title}</h1>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm text-[#6b5b50]">
+        <span>{frontmatter.author}</span>
+        <span>•</span>
+        <span>{new Date(frontmatter.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+      </div>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {frontmatter.tags.map((tag: string) => <span class="rounded-full border border-[#e3c58f] bg-[#f7efe8] px-3 py-1 text-sm text-[#7a3b28]">{tag}</span>)}
+      </div>
+      <div class="prose prose-lg mt-10 max-w-none prose-headings:text-[#23110d] prose-p:text-[#5f564f] prose-a:text-[#5a1f14]">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

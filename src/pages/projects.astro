@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { projects } from '../data/services';
+---
+
+<BaseLayout title="Projects" description="Placeholder case study showcase for The George's Tech Innovations.">
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <SectionHeading eyebrow="Projects" title="A curated preview of placeholder case studies and product directions." description="These examples reflect the kind of work the studio could showcase once real projects are ready." />
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {projects.map((project) => (
+        <article class="overflow-hidden rounded-[2rem] border border-[#efe2cc] bg-[#fffaf2] shadow-sm">
+          <div class="h-48 bg-[linear-gradient(135deg,#e3c58f,#f3e3cc)]" />
+          <div class="p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#9f6a3c]">{project.category}</p>
+            <h2 class="mt-3 text-2xl font-semibold text-[#23110d]">{project.title}</h2>
+            <p class="mt-4 text-base leading-7 text-[#6b5b50]">{project.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
